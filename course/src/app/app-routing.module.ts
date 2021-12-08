@@ -8,7 +8,7 @@ import { InfoComponent } from './course-list/info/info.component';
 
 const routes: Routes = [
   {
-    path:'', redirectTo:'courses', pathMatch:'full'
+    path: '', redirectTo: 'courses', pathMatch: 'full'
     },
     {
     path:'courses', component:CourseListComponent

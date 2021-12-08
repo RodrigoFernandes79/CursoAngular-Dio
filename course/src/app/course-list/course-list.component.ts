@@ -3,9 +3,9 @@ import { Course } from './course';
 import { CourseService } from './course.service';
 
 @Component({
-  selector: 'app-course-list',
-  templateUrl: './course-list.component.html',
-  styleUrls: ['./course-list.component.scss']
+  
+  templateUrl: './course-list.component.html'
+  
 })
 export class CourseListComponent implements OnInit {
 
@@ -17,11 +17,29 @@ export class CourseListComponent implements OnInit {
   constructor(private courseService:CourseService) { }
 
   ngOnInit(): void {
-    this._courses = this.courseService.retrieveAll();
-    this.filteredCourse = this._courses;
+    this.retrieveAll();
     
      
   }
+  retrieveAll(): void { 
+    this.courseService.retrieveAll().subscribe({
+        next: courses => {
+            this._courses = courses;
+            this.filteredCourse = this._courses;
+        },
+        error: err => console.log('Error', err) 
+    })
+}
+deleteById(courseId:number):void{
+  this.courseService.deleteById(courseId).subscribe({
+    next:() => {
+      console.log('Deleted with success!');
+      this.retrieveAll();
+    },
+    error: err => console.log('Erro!',err)
+  })
+}
+
   set filter(value:string){
     this._filterBy =value;
 

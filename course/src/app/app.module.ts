@@ -9,7 +9,7 @@ import { StarComponent } from './star/star.component';
 import { pipeReplace } from './pipes/pipeReplace';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
-
+import { HttpClientModule } from '@angular/common/http'
 import { error404Component } from './404/error404.component';
 import { InfoComponent } from './course-list/info/info.component';
 
@@ -23,13 +23,15 @@ import { InfoComponent } from './course-list/info/info.component';
     pipeReplace,
     NavbarComponent,
     error404Component,
-    InfoComponent
+    InfoComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
