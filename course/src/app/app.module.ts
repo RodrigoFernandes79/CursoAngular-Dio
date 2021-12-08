@@ -9,8 +9,10 @@ import { StarComponent } from './star/star.component';
 import { pipeReplace } from './pipes/pipeReplace';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
-import { listenerCount } from 'process';
+
 import { error404Component } from './404/error404.component';
+import { InfoComponent } from './course-list/info/info.component';
+
 
 
 @NgModule({
@@ -20,23 +22,14 @@ import { error404Component } from './404/error404.component';
     StarComponent,
     pipeReplace,
     NavbarComponent,
-    error404Component
+    error404Component,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot([
-      {
-      path:'', redirectTo:'courses', pathMatch:'full'
-      },
-      {
-      path:'courses', component:CourseListComponent
-      },
-      {
-        path:'**', component:error404Component
-      }
-    ])
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
